@@ -1,0 +1,61 @@
+<form [formGroup]="myForm" autocomplete='off' >
+
+    <h1 [style.color]="'green'">Welocome</h1>
+
+       
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your Name</mat-label>
+        <input matInput placeholder="Enter your name" formControlName="name" >
+        <mat-error  *ngIf="
+        myForm
+          .get('name')
+          .hasError('required')
+      ">
+      Please enter your name</mat-error>
+    <mat-error *ngIf="
+    myForm
+          .get('name')
+          .hasError('minlength') &&
+          !myForm
+          .get('name')
+          .hasError('pattern')
+      ">
+      please enter atleast 3 characters</mat-error>
+    <mat-error  *ngIf="
+    myForm
+          .get('name')
+          .hasError('pattern')
+      ">
+      Please enter only characters</mat-error>
+
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your Mobile Number</mat-label>
+        <input matInput placeholder="Enter your Mobile Number" formControlName="mobile" >
+        <mat-error  *ngIf="
+        myForm
+          .get('mobile')
+          .hasError('required')
+      ">
+      Please enter your mobile number</mat-error>
+    <mat-error *ngIf="
+    myForm
+          .get('mobile')
+          .hasError('minlength') &&
+          !myForm
+          .get('mobile')
+          .hasError('pattern')
+      ">
+      please enter 10 digit Mobile Number</mat-error>
+    <mat-error  *ngIf="
+    myForm
+          .get('mobile')
+          .hasError('pattern')
+      ">
+      Please enter only digits</mat-error>
+   </mat-form-field>
+ 
+   <br>
+    <button  mat-raised-button type="submit" color="primary"[disabled]="myForm.invalid">Log-in</button>
+</form>

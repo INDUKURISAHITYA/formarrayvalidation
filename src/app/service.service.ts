@@ -14,28 +14,16 @@ export class ServiceService {
 
   constructor(public http:HttpClient) { }
 
-  getdata():Observable<any>
+  getdata(): Observable<any>
   {
-    return this.http.get<any>(this.url).pipe(retry(1),catchError(this.errorHandler))
-    
+    return this.http.get<any>(this.url).pipe(retry(1),catchError(this.errorHandler));
   }
 
 
-  errorHandler(xyz)
+ errorHandler(xyz: HttpErrorResponse)
   {
-    let errorMsg ='';
-    if(xyz.error instanceof ErrorEvent)
-    {
-      errorMsg += `Error : ${xyz.error.message}`;   
-    }
-    else
-    {
-      errorMsg +=`Error code : ${xyz.status} and Message: ${xyz.message}`;
-    }
-    return throwError(errorMsg);
+    return throwError(xyz);
   }
-  
 
-  
   
 }

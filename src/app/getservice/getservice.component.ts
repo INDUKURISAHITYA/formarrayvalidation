@@ -16,7 +16,7 @@ export class GetserviceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.service.getdata().subscribe(x=>this.url=x,err => this.error =err);
+    this.service.getdata().subscribe(x=> this.url= x,err => this.error = err);
   }
 
 
